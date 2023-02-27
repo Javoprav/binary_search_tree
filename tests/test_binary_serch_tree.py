@@ -2,12 +2,6 @@ import pytest
 from src.binary_serch_tree import BinarySearchTree
 
 
-@pytest.fixture
-def bst():
-  bst = BinarySearchTree()
-  bst.insert({'id': 40})
-  return bst
-
 def test_bst_empty():
   """В пустом дереве root ссылается на None """
   bst = BinarySearchTree()
@@ -38,4 +32,9 @@ def test_bst_insert_right_right(bst):
   bst.insert({'id': 50})
   bst.insert({'id': 60})
   assert bst.root.right.right.data == {'id': 60}
+
+def test_bst_search_empty():
+  """Поиск в пустом дереве возвращает None"""
+  bst = BinarySearchTree()
+  assert bst.search(444) is None
 
